@@ -1,4 +1,6 @@
 @echo off
+chcp 65001 >nul
+
 setlocal
 set URL=https://raw.githubusercontent.com/eteixeira-scanntech/win11/refs/heads/main/unattend.xml
 set DEST=C:\Windows\Panther\unattend.xml
