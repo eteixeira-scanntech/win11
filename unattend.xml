@@ -1,17 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <unattend xmlns="urn:schemas-microsoft-com:unattend" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State">
-	<!--https://schneegans.de/windows/unattend-generator/?LanguageMode=Interactive&ProcessorArchitecture=amd64&ComputerNameMode=Random&CompactOsMode=Default&TimeZoneMode=Implicit&PartitionMode=Interactive&DiskAssertionMode=Skip&WindowsEditionMode=Firmware&InstallFromMode=Automatic&PEMode=Default&UserAccountMode=Unattended&AccountName0=Service+Desk&AccountDisplayName0=service-desk&AccountPassword0=&AccountGroup0=Administrators&AutoLogonMode=Own&PasswordExpirationMode=Unlimited&LockoutMode=Default&HideFiles=Hidden&TaskbarSearch=Box&TaskbarIconsMode=Default&StartTilesMode=Default&StartPinsMode=Default&HideEdgeFre=true&DisableEdgeStartupBoost=true&EffectsMode=Default&DesktopIconsMode=Default&StartFoldersMode=Default&WifiMode=Skip&ExpressSettings=DisableAll&LockKeysMode=Configure&CapsLockInitial=Off&CapsLockBehavior=Toggle&NumLockInitial=On&NumLockBehavior=Toggle&ScrollLockInitial=Off&ScrollLockBehavior=Toggle&StickyKeysMode=Default&ColorMode=Default&WallpaperMode=Solid&WallpaperColor=%23000000&LockScreenMode=Default&FirstLogonScript0=winget+install+%2D%2Did%3DAnyDeskSoftware.AnyDesk+-e+%2D%2Dsilent&FirstLogonScriptType0=Ps1&WdacMode=Skip-->
+	<!--https://schneegans.de/windows/unattend-generator/?UILanguage=es-ES&Locale=es-UY&Keyboard=0000040a&GeoLocation=246&LanguageMode=Interactive&ProcessorArchitecture=amd64&BypassRequirementsCheck=true&BypassNetworkCheck=true&HidePowerShellWindows=true&ComputerNameMode=Random&CompactOsMode=Never&TimeZoneMode=Explicit&TimeZone=Montevideo+Standard+Time&PartitionMode=Interactive&DiskAssertionMode=Skip&WindowsEditionMode=Interactive&InstallFromMode=Automatic&PEMode=Default&UserAccountMode=Unattended&AccountName0=service-desk&AccountDisplayName0=Service+Desk&AccountPassword0=&AccountGroup0=Administrators&AutoLogonMode=Own&PasswordExpirationMode=Unlimited&LockoutMode=Default&HideFiles=Hidden&TaskbarSearch=Box&TaskbarIconsMode=Default&StartTilesMode=Default&StartPinsMode=Default&HideEdgeFre=true&DisableEdgeStartupBoost=true&EffectsMode=Default&DesktopIconsMode=Default&StartFoldersMode=Default&WifiMode=Skip&ExpressSettings=DisableAll&LockKeysMode=Configure&CapsLockInitial=Off&CapsLockBehavior=Toggle&NumLockInitial=On&NumLockBehavior=Toggle&ScrollLockInitial=Off&ScrollLockBehavior=Toggle&StickyKeysMode=Default&ColorMode=Default&WallpaperMode=Solid&WallpaperColor=%23000000&LockScreenMode=Default&SystemScript1=%23+%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%0D%0A%23+Script%3A+Install-AnyDesk-RustDesk-Winget.ps1%0D%0A%23+Requiere%3A+Windows+11+24H2+o+posterior+%28Build+%3E%3D+26100%29%0D%0A%23+Funci%C3%B3n%3A+Espera+que+winget+est%C3%A9+disponible+y+luego+instala%0D%0A%23++++++++++AnyDesk+y+RustDesk+de+forma+silenciosa+para+todo+el+sistema.%0D%0A%23+%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%0D%0A%0D%0Aif%28+%5BSystem.Environment%5D%3A%3AOSVersion.Version.Build+-lt+26100+%29+%7B%0D%0A++++%27This+script+requires+Windows+11+24H2+or+later.%27+%7C+Write-Warning%3B%0D%0A++++return%3B%0D%0A%7D%0D%0A%0D%0A%24timeout+%3D+%5Bdatetime%5D%3A%3ANow.AddMinutes%285%29%3B%0D%0A%24exe+%3D+%22%24env%3ALOCALAPPDATA%5CMicrosoft%5CWindowsApps%5Cwinget.exe%22%3B%0D%0A%0D%0Awhile%28+%24true+%29+%7B%0D%0A++++if%28+Test-Path+%24exe+%29+%7B%0D%0A++++++++Write-Host+%22winget+encontrado+en+%24exe%22+-ForegroundColor+Green%0D%0A%0D%0A++++++++%23+Instalar+AnyDesk%0D%0A++++++++Write-Host+%22%60n%3D%3D%3D+Instalando+AnyDesk+%3D%3D%3D%22+-ForegroundColor+Cyan%0D%0A++++++++%26+%24exe+install+%2D%2Dexact+%2D%2Did+AnyDeskSoftwareGmbH.AnyDesk+%60%0D%0A++++++++++++%2D%2Dsilent+%2D%2Daccept-package-agreements+%2D%2Daccept-source-agreements+%60%0D%0A++++++++++++%2D%2Dscope+machine+%2D%2Dsource+winget%3B%0D%0A%0D%0A++++++++%23+Instalar+RustDesk%0D%0A++++++++Write-Host+%22%60n%3D%3D%3D+Instalando+RustDesk+%3D%3D%3D%22+-ForegroundColor+Cyan%0D%0A++++++++%26+%24exe+install+%2D%2Dexact+%2D%2Did+RustDesk.RustDesk+%60%0D%0A++++++++++++%2D%2Dsilent+%2D%2Daccept-package-agreements+%2D%2Daccept-source-agreements+%60%0D%0A++++++++++++%2D%2Dscope+machine+%2D%2Dsource+winget%3B%0D%0A%0D%0A++++++++Write-Host+%22%60nInstalaciones+completadas.%22+-ForegroundColor+Green%0D%0A++++++++return%3B%0D%0A++++%7D%0D%0A%0D%0A++++if%28+%5Bdatetime%5D%3A%3ANow+-gt+%24timeout+%29+%7B%0D%0A++++++++%27File+%7B0%7D+does+not+exist.%27+-f+%24exe+%7C+Write-Warning%3B%0D%0A++++++++return%3B%0D%0A++++%7D%0D%0A%0D%0A++++Start-Sleep+-Seconds+1%3B%0D%0A%7D%0D%0A&SystemScriptType1=Ps1&WdacMode=Skip-->
 	<settings pass="offlineServicing"></settings>
 	<settings pass="windowsPE">
 		<component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+			<ImageInstall>
+				<OSImage>
+					<Compact>false</Compact>
+				</OSImage>
+			</ImageInstall>
 			<UserData>
 				<ProductKey>
 					<Key>00000-00000-00000-00000-00000</Key>
-					<WillShowUI>OnError</WillShowUI>
+					<WillShowUI>Always</WillShowUI>
 				</ProductKey>
 				<AcceptEula>true</AcceptEula>
 			</UserData>
 			<UseConfigurationSet>false</UseConfigurationSet>
+			<RunSynchronous>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>1</Order>
+					<Path>reg.exe add "HKLM\SYSTEM\Setup\LabConfig" /v BypassTPMCheck /t REG_DWORD /d 1 /f</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>2</Order>
+					<Path>reg.exe add "HKLM\SYSTEM\Setup\LabConfig" /v BypassSecureBootCheck /t REG_DWORD /d 1 /f</Path>
+				</RunSynchronousCommand>
+				<RunSynchronousCommand wcm:action="add">
+					<Order>3</Order>
+					<Path>reg.exe add "HKLM\SYSTEM\Setup\LabConfig" /v BypassRAMCheck /t REG_DWORD /d 1 /f</Path>
+				</RunSynchronousCommand>
+			</RunSynchronous>
 		</component>
 	</settings>
 	<settings pass="generalize"></settings>
@@ -20,11 +39,11 @@
 			<RunSynchronous>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>1</Order>
-					<Path>powershell.exe -WindowStyle Normal -NoProfile -Command "$xml = [xml]::new(); $xml.Load('C:\Windows\Panther\unattend.xml'); $sb = [scriptblock]::Create( $xml.unattend.Extensions.ExtractScript ); Invoke-Command -ScriptBlock $sb -ArgumentList $xml;"</Path>
+					<Path>powershell.exe -WindowStyle Hidden -NoProfile -Command "$xml = [xml]::new(); $xml.Load('C:\Windows\Panther\unattend.xml'); $sb = [scriptblock]::Create( $xml.unattend.Extensions.ExtractScript ); Invoke-Command -ScriptBlock $sb -ArgumentList $xml;"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>2</Order>
-					<Path>powershell.exe -WindowStyle Normal -NoProfile -Command "Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\Specialize.ps1' -Raw | Invoke-Expression;"</Path>
+					<Path>powershell.exe -WindowStyle Hidden -NoProfile -Command "Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\Specialize.ps1' -Raw | Invoke-Expression;"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>3</Order>
@@ -32,13 +51,16 @@
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>4</Order>
-					<Path>powershell.exe -WindowStyle Normal -NoProfile -Command "Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\DefaultUser.ps1' -Raw | Invoke-Expression;"</Path>
+					<Path>powershell.exe -WindowStyle Hidden -NoProfile -Command "Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\DefaultUser.ps1' -Raw | Invoke-Expression;"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>5</Order>
 					<Path>reg.exe unload "HKU\DefaultUser"</Path>
 				</RunSynchronousCommand>
 			</RunSynchronous>
+		</component>
+		<component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+			<TimeZone>Montevideo Standard Time</TimeZone>
 		</component>
 	</settings>
 	<settings pass="auditSystem"></settings>
@@ -48,8 +70,8 @@
 			<UserAccounts>
 				<LocalAccounts>
 					<LocalAccount wcm:action="add">
-						<Name>Service Desk</Name>
-						<DisplayName>service-desk</DisplayName>
+						<Name>service-desk</Name>
+						<DisplayName>Service Desk</DisplayName>
 						<Group>Administrators</Group>
 						<Password>
 							<Value></Value>
@@ -59,7 +81,7 @@
 				</LocalAccounts>
 			</UserAccounts>
 			<AutoLogon>
-				<Username>Service Desk</Username>
+				<Username>service-desk</Username>
 				<Enabled>true</Enabled>
 				<LogonCount>1</LogonCount>
 				<Password>
@@ -76,7 +98,7 @@
 			<FirstLogonCommands>
 				<SynchronousCommand wcm:action="add">
 					<Order>1</Order>
-					<CommandLine>powershell.exe -WindowStyle Normal -NoProfile -Command "Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\FirstLogon.ps1' -Raw | Invoke-Expression;"</CommandLine>
+					<CommandLine>powershell.exe -WindowStyle Hidden -NoProfile -Command "Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\FirstLogon.ps1' -Raw | Invoke-Expression;"</CommandLine>
 				</SynchronousCommand>
 			</FirstLogonCommands>
 		</component>
@@ -161,10 +183,57 @@ function Set-WallpaperImage {
 Set-WallpaperColor -HtmlColor '#000000';
 		</File>
 		<File path="C:\Windows\Setup\Scripts\unattend-01.ps1">
-winget install --id=AnyDeskSoftware.AnyDesk -e --silent
+# ============================================
+# Script: Install-AnyDesk-RustDesk-Winget.ps1
+# Requiere: Windows 11 24H2 o posterior (Build &gt;= 26100)
+# Funci&#xF3;n: Espera que winget est&#xE9; disponible y luego instala
+#          AnyDesk y RustDesk de forma silenciosa para todo el sistema.
+# ============================================
+
+if( [System.Environment]::OSVersion.Version.Build -lt 26100 ) {
+    'This script requires Windows 11 24H2 or later.' | Write-Warning;
+    return;
+}
+
+$timeout = [datetime]::Now.AddMinutes(5);
+$exe = "$env:LOCALAPPDATA\Microsoft\WindowsApps\winget.exe";
+
+while( $true ) {
+    if( Test-Path $exe ) {
+        Write-Host "winget encontrado en $exe" -ForegroundColor Green
+
+        # Instalar AnyDesk
+        Write-Host "`n=== Instalando AnyDesk ===" -ForegroundColor Cyan
+        &amp; $exe install --exact --id AnyDeskSoftwareGmbH.AnyDesk `
+            --silent --accept-package-agreements --accept-source-agreements `
+            --scope machine --source winget;
+
+        # Instalar RustDesk
+        Write-Host "`n=== Instalando RustDesk ===" -ForegroundColor Cyan
+        &amp; $exe install --exact --id RustDesk.RustDesk `
+            --silent --accept-package-agreements --accept-source-agreements `
+            --scope machine --source winget;
+
+        Write-Host "`nInstalaciones completadas." -ForegroundColor Green
+        return;
+    }
+
+    if( [datetime]::Now -gt $timeout ) {
+        'File {0} does not exist.' -f $exe | Write-Warning;
+        return;
+    }
+
+    Start-Sleep -Seconds 1;
+}
 		</File>
 		<File path="C:\Windows\Setup\Scripts\Specialize.ps1">
 $scripts = @(
+	{
+		reg.exe add "HKLM\SYSTEM\Setup\MoSetup" /v AllowUpgradesWithUnsupportedTPMOrCPU /t REG_DWORD /d 1 /f;
+	};
+	{
+		reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE" /v BypassNRO /t REG_DWORD /d 1 /f;
+	};
 	{
 		net.exe accounts /maxpwage:UNLIMITED;
 	};
@@ -174,6 +243,9 @@ $scripts = @(
 	{
 		reg.exe add "HKLM\Software\Policies\Microsoft\Edge\Recommended" /v BackgroundModeEnabled /t REG_DWORD /d 0 /f;
 		reg.exe add "HKLM\Software\Policies\Microsoft\Edge\Recommended" /v StartupBoostEnabled /t REG_DWORD /d 0 /f;
+	};
+	{
+		Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\unattend-01.ps1' -Raw | Invoke-Expression;
 	};
 );
 
@@ -236,7 +308,7 @@ $scripts = @(
 		}
 	};
 	{
-		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\RunOnce" /v "UnattendedSetup" /t REG_SZ /d "powershell.exe -WindowStyle Normal -NoProfile -Command \""Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\UserOnce.ps1' -Raw | Invoke-Expression;\""" /f;
+		reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\RunOnce" /v "UnattendedSetup" /t REG_SZ /d "powershell.exe -WindowStyle Hidden -NoProfile -Command \""Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\UserOnce.ps1' -Raw | Invoke-Expression;\""" /f;
 	};
 );
 
@@ -266,9 +338,6 @@ $scripts = @(
 $scripts = @(
 	{
 		Set-ItemProperty -LiteralPath 'Registry::HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' -Name 'AutoLogonCount' -Type 'DWord' -Force -Value 0;
-	};
-	{
-		Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\unattend-01.ps1' -Raw | Invoke-Expression;
 	};
 	{
 		Remove-Item -LiteralPath @(
